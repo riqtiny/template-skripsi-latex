@@ -1,0 +1,177 @@
+\documentclass[12pt, a4paper]{report}
+
+% --- PENGATURAN BAHASA INDONESIA ---
+\usepackage[indonesian]{babel}
+
+% Mengubah nama bawaan "Bibliography" menjadi "DAFTAR PUSTAKA"
+\addto\captionsindonesian{
+	\renewcommand{\bibname}{DAFTAR PUSTAKA}
+	\renewcommand{\contentsname}{DAFTAR ISI} % Sekalian membuat Daftar Isi jadi huruf kapital
+}
+
+% --- PENGATURAN HALAMAN & MARGIN ---
+% Menggunakan kertas A4 [cite: 366]
+% Margin Atas: 4 cm, Bawah: 3 cm, Kiri: 4 cm, Kanan: 3 cm [cite: 367, 368]
+\usepackage[top=4cm, bottom=3cm, left=4cm, right=3cm]{geometry}
+
+% --- PENGATURAN FONT & SPASI ---
+% Jenis huruf Times New Roman [cite: 370]
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{courier} % Untuk kode program [cite: 371]
+
+% Jarak spasi 1.5 [cite: 369]
+\usepackage{setspace}
+\setstretch{1.5}
+
+% Pada semua paragraf dalam subbab, tidak ada yang indent ke dalam [cite: 377]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em} % Memberi jarak antar paragraf untuk kenyamanan membaca
+
+% --- PENGATURAN NOMOR HALAMAN ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Membersihkan format bawaan
+% Halaman pokok di pojok kanan atas [cite: 396]
+\fancyhead[R]{\thepage} 
+\renewcommand{\headrulewidth}{0pt}
+
+% Halaman pertama dari setiap bab di bagian bawah tengah [cite: 395, 396]
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
+
+% --- PENGATURAN JUDUL BAB & SUBBAB ---
+\usepackage{titlesec}
+% Judul bab di tengah, huruf kapital, ukuran 14 pt, tebal [cite: 383]
+\titleformat{\chapter}[display]
+{\normalfont\fontsize{14}{17}\bfseries\centering}
+{\MakeUppercase{\chaptertitlename}~\thechapter}{0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+
+% Judul subbab dimulai dari kiri, ukuran 12 pt, tebal [cite: 384]
+\titleformat{\section}
+{\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\fontsize{12}{15}\bfseries}{\thesubsection}{1em}{}
+
+% --- PENGATURAN DAFTAR PUSTAKA (HARVARD) ---
+% Format sitasi menggunakan Harvard [cite: 421]
+\usepackage[authoryear]{natbib}
+\bibliographystyle{agsm} % Menggunakan style AGSM untuk format Harvard
+
+% --- PENGATURAN GAMBAR & TABEL ---
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{caption}
+% Judul gambar/tabel diketik dengan ukuran huruf 12 pt [cite: 405]
+\captionsetup[figure]{font=normalsize, justification=centering, position=bottom}
+\captionsetup[table]{font=normalsize, justification=centering, position=top}
+
+
+\begin{document}
+	
+	% ==========================================
+	% BAGIAN AWAL
+	% ==========================================
+	% Bagian Awal nomor halaman ditulis dengan angka romawi huruf kecil (i,ii,iii) di tengah bawah [cite: 392]
+	\pagenumbering{roman} 
+	\pagestyle{plain} 
+	
+	% --- HALAMAN JUDUL ---
+	% Halaman judul diketik simetris di tengah dengan spasi tunggal [cite: 175, 176]
+	\begin{titlepage}
+		\begin{center}
+			\singlespacing
+			% Nama Universitas dan Fakultas (14 pt, Kapital, Tebal) [cite: 178]
+			\fontsize{14}{17}\selectfont\textbf{UNIVERSITAS GUNADARMA}\\
+			\textbf{FAKULTAS TEKNOLOGI INDUSTRI}\\
+			\vspace{1.5cm}
+			
+			% Logo Gunadarma dengan diameter 6 cm [cite: 177]
+			% Hapus tanda komentar pada baris di bawah jika file logo.png sudah tersedia
+			\includegraphics[width=6cm]{Logo_Gunadarma.jpg}\\
+			\vspace{1.5cm}
+			
+			% Judul Skripsi (14 pt, Kapital, Tebal) [cite: 178]
+			\textbf{JUDUL SKRIPSI DITULIS SECARA RINGKAS, JELAS, DAN HURUF KAPITAL MAKSIMAL 5 BARIS}\\
+			\vspace{1.5cm}
+			
+			% Data Penulis (12 pt) [cite: 179]
+			\fontsize{12}{15}\selectfont
+			Disusun Oleh :\\
+			\vspace{0.5cm}
+			\begin{tabular}{ll}
+				Nama & : Mikail Thoriq Kariemshah Banowo \\
+				NPM & : 50422881\\
+				Program Studi & : Informatika \\
+				Pembimbing & : Dr. Ericks Rachmat Swedia, ST., MMSI. \\
+			\end{tabular}\\
+			\vspace{2cm}
+			
+			% Tujuan (12 pt) [cite: 179]
+			Diajukan Guna Melengkapi Sebagian Syarat\\
+			Dalam Mencapai Gelar Sarjana Strata Satu (S1)\\
+			\vfill
+			
+			% Kota dan Tahun (14 pt, Kapital, Tebal) [cite: 178]
+			\fontsize{14}{17}\selectfont
+			\textbf{JAKARTA}\\
+			\textbf{2026}
+		\end{center}
+	\end{titlepage}
+	
+	% Halaman setelah judul dihitung sebagai halaman ii
+	\setcounter{page}{2} 
+	
+	% --- HALAMAN PENGESAHAN (Contoh) ---
+	\include{pengesahan}
+	
+		% --- ABSTRAK ---
+	\chapter*{ABSTRAK}
+	\addcontentsline{toc}{chapter}{ABSTRAK}
+	\begin{singlespace} % Abstrak diketik dengan spasi tunggal [cite: 249]
+		\noindent Mikail Thoriq Kariemshah Banowo. 50422881\\
+		JUDUL SKRIPSI ANDA.\\
+		Skripsi. Program Studi Informatika, Fakultas Teknologi Industri, Universitas Gunadarma, 2025.\\
+		Kata Kunci: Tuliskan, Maksimal, Lima, Kata, Kunci\\
+		(xiii + 50 + lampiran)\\
+		
+		Maksimum 250 kata dalam satu paragraf yang memuat permasalahan, tujuan, metode penelitian, hasil, dan kesimpulan... [cite: 246, 249]
+		\\ \\
+		Daftar Pustaka (2015-2026) % Tahun daftar pustaka yang digunakan [cite: 255]
+	\end{singlespace}
+	\clearpage
+	
+	% -- KATA PENGANTAR --
+	\include{pengantar}
+	
+	% --- DAFTAR ISI ---
+	\tableofcontents
+	\clearpage
+	
+	% ==========================================
+	% BAGIAN ISI
+	% ==========================================
+	\clearpage
+	\pagenumbering{arabic} % Berubah jadi angka latin
+	\pagestyle{fancy}      % Halaman biasa di kanan atas, awal bab di bawah tengah
+
+	\include{bab1}
+	\include{bab2}
+	\include{bab3}
+	\include{bab4}
+	\include{bab5}
+	
+	% ==========================================
+	% BAGIAN AKHIR
+	% ==========================================
+	\clearpage
+	\pagestyle{plain} % -> KODE INI MENGEMBALIKAN NOMOR HALAMAN KE TENGAH BAWAH UNTUK DAFTAR PUSTAKA
+	\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+	\bibliography{referensi}
+	
+\end{document}
