@@ -13,3 +13,9 @@ editor nya:
 ```bash
 sudo dnf install texstudio
 ```
+
+## Saran bib reference manager:
+  - JabRef
+ ```bash
+  flatpak install flathub org.jabref.jabref
+ ```
